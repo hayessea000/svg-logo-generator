@@ -27,6 +27,18 @@ inquirer
     },
   ])
   .then((data) => {
+      console.log(data.shape)
+    var logoMade = new makeShape.$[data.shape](data.shapeColor)
+    
+    let writeLogo = function(){
+        return`<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+        
+        ${logoMade.render()}
+        
+        <text x="150" y="125" font-size="60" text-anchor="middle" fill="${data.textColor}">${data.text}</text>
+        
+        </svg>`
+    }
     const filename = 'logo.svg';
 
     fs.writeFile(filename, writeLogo(data), (err) =>
@@ -34,15 +46,6 @@ inquirer
     );
   });
 
-let writeLogo = function(){
-    return`<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-    
-    ${createdShape}
-    
-    <text x="150" y="125" font-size="60" text-anchor="middle" fill="${textColor}">${data.text}</text>
-    
-    </svg>`
-}
 /* <svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
 
 <circle cx="150" cy="100" r="80" fill="green" />
