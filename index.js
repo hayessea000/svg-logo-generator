@@ -5,6 +5,11 @@ inquirer
   .prompt([
     {
       type: 'input',
+      name: 'name',
+      message: 'What do you want to call the logo?',
+    },
+    {
+      type: 'input',
       name: 'text',
       message: 'What 3 letter do you want?',
     },
@@ -21,7 +26,14 @@ inquirer
     },
     {
         type: 'input',
-        name: 'text',
+        name: 'shapeColor',
         message: 'What color do you want the shape?',
     },
   ])
+  .then((data) => {
+    const filename = `${data.name}.svg`;
+
+    fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) =>
+      err ? console.log(err) : console.log('Success!')
+    );
+  });
