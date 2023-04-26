@@ -27,13 +27,28 @@ inquirer
     },
   ])
   .then((data) => {
-      console.log(data.shape)
-    var logoMade = new makeShape.$[data.shape](data.shapeColor)
+      console.log({...data})
+      let shapeSwitch ;
+      switch(data.shape){
+        case "Triangle":
+            shapeSwitch= new makeShape.Triangle()
+            break;
+        case "Circle":
+            shapeSwitch= new makeShape.Circle()
+            break;
+        case "Square":
+            shapeSwitch= new makeShape.Square()
+            break;
+        default:
+            console.log("noooooooooooo")
+      }
+      shapeSwitch.setColor(data.shapeColor)
+    // var logoMade = new makeShape.$[data.shape](data.shapeColor)
     
-    let writeLogo = function(){
+    let writeLogo = function(data){
         return`<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
         
-        ${logoMade.render()}
+        ${shapeSwitch.render()}
         
         <text x="150" y="125" font-size="60" text-anchor="middle" fill="${data.textColor}">${data.text}</text>
         
