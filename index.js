@@ -5,11 +5,6 @@ inquirer
   .prompt([
     {
       type: 'input',
-      name: 'name',
-      message: 'What do you want to call the logo?',
-    },
-    {
-      type: 'input',
       name: 'text',
       message: 'What 3 letter do you want?',
     },
@@ -31,9 +26,16 @@ inquirer
     },
   ])
   .then((data) => {
-    const filename = `${data.name}.svg`;
+    const filename = 'logo.svg';
 
     fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) =>
-      err ? console.log(err) : console.log('Success!')
+      err ? console.log(err) : console.log('Generated logo.svg')
     );
   });
+{/* <svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+
+<circle cx="150" cy="100" r="80" fill="green" />
+
+<text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
+
+</svg> */}
