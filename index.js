@@ -30,7 +30,6 @@ inquirer
     },
   ])
   .then((data) => {
-      console.log({...data})
       let shapeSwitch ;
       switch(data.shape){
         case "Triangle":
