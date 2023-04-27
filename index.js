@@ -1,6 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const makeShape = require('./lib/shapes');
+// const path = require('path')
+// const OUTPUT_DIR =path.resolve(__dirname, 'examples')
+// const outputPath =path.join(OUTPUT_DIR, 'logo.svg')
 
 inquirer
   .prompt([
@@ -43,7 +46,6 @@ inquirer
             console.log("noooooooooooo")
       }
       shapeSwitch.setColor(data.shapeColor)
-    // var logoMade = new makeShape.$[data.shape](data.shapeColor)
     
     let writeLogo = function(data){
         return`<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -59,6 +61,11 @@ inquirer
     fs.writeFile(filename, writeLogo(data), (err) =>
       err ? console.log(err) : console.log('Generated logo.svg')
     );
+    // function exampleFiles(){
+    //     if(!fs.existsSync(OUTPUT_DIR)){
+    //         fs.mkdirSync(OUTPUT_DIR)
+    //     }fs.writeFileSync(outputPath, render(filename))
+    // }exampleFiles()
   });
 
 /* <svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
